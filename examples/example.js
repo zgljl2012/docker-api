@@ -12,11 +12,16 @@ let _container
 
 docker.container.create({
   Image: 'ubuntu',
-  Cmd: [ '/bin/bash', '-c', 'tail -f /var/log/dmesg' ],
+  Cmd: [ '/bin/bash', '-c', 'tail -f /var/log/bootstrap.log' ],
   name: 'test'
 })
-  .then((container) => container.start())
   .then((container) => {
+    console.log('Created container successfully')
+    return container.start()
+  })
+  .then((container) => {
+    console.log('Start container successfully')
+    console.log('Execute `echo test`')
     _container = container
     return container.exec.create({
       AttachStdout: true,
@@ -28,5 +33,14 @@ docker.container.create({
     return exec.start({ Detach: false })
   })
   .then((stream) => promisifyStream(stream))
-  .then(() => _container.kill())
+  .then(() => {
+    console.log('Kill container successfully')
+    _container.kill()
+  }).then(() => {
+    console.log('Deleting container...')
+    setTimeout(() => {
+      _container.delete()
+      console.log('Remove container successfully')
+    }, 3000)
+  })
   .catch((error) => console.log(error))

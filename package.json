@@ -1,6 +1,6 @@
 {
-  "name": "node-docker-api",
-  "version": "1.1.23",
+  "name": "@cpchain-foundation/node-docker-api",
+  "version": "1.2.0",
   "description": "Docker Remote API driver for node",
   "main": "./lib/docker",
   "typings": "./lib/docker",
@@ -41,7 +41,7 @@
     "typescript": "^2.1.6"
   },
   "dependencies": {
-    "docker-modem": "^0.3.1",
+    "docker-modem": "^3.0.8",
     "memorystream": "^0.3.1"
   }
 }
