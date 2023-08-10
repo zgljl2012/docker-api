@@ -1,6 +1,5 @@
 
 build:
-	@rm -rf lib
 	@yarn build
 
 publish: build

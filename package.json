@@ -1,9 +1,12 @@
 {
   "name": "@cpchain-foundation/node-docker-api",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Docker Remote API driver for node",
   "main": "./lib/docker",
   "typings": "./lib/docker",
+  "files": [
+    "./lib/**"
+  ],
   "scripts": {
     "watch-test": "nodemon --watch build --watch test --exec 'npm run test'",
     "lint": "./node_modules/tslint/bin/tslint -c tslint.json 'src/**/*.ts'",
